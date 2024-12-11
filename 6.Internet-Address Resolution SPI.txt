@@ -1,0 +1,15 @@
+By default, the java.net.InetAddress API uses the operating system’s built-in resolver to resolve host names to Internet Protocol (IP) addresses.
+
+
+InetAddress ip = InetAddress.getByName("google.com");
+
+This JEP redesign java.net.InetAddress API to use service loader to find the resolver instead of using the operating system’s built-in resolver.
+
+InetAddress.java
+
+  private static InetAddressResolver loadResolver() {
+      return ServiceLoader.load(InetAddressResolverProvider.class)
+              .findFirst()
+              .map(nsp -> nsp.get(builtinConfiguration()))
+              .orElse(BUILTIN_RESOLVER);
+  }

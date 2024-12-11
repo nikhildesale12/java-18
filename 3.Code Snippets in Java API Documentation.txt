@@ -1,0 +1,66 @@
+Before Java 18, we used {@code ...} to include the source code snippets in the documentation like this:
+
+/**
+ * <pre>{@code
+ *     int sum = widgets.stream()
+ *                      .filter(w -> w.getColor() == RED)
+ *                      .mapToInt(w -> w.getWeight())
+ *                      .sum();
+ * }</pre>
+ */
+
+
+The javadoc tool will render the body of the {@code ...} tag as HTML code. This method has some disadvantages, like the inability to do syntax highlighting,
+can’t to contain HTML markups, indentation issues, etc.
+
+This introduces the @snippet tag to allow developers to be more flexible in including source code snippets in the documentation.
+
+Inline snippets
+The generated documentation will render the body of the {@snippet ...} tag as HTML code. There is no need to escape special characters like < and>` with HTML entities.
+
+
+/**
+* The following code shows how to use {@code Optional.isPresent}:
+* {@snippet :
+* if (v.isPresent()) {
+*     System.out.println("v: " + v.get());
+* }
+* }
+*/
+
+External snippets
+This includes the source code snippet from a separate file.
+
+A comment from ShowExample.java links the source code snippets from a separate file ShowOptional.java.
+
+ShowExample.java
+
+ public class ShowExample {
+     /**
+      * The following code shows how to use {@code Optional.isPresent}:
+      * {@snippet file="ShowOptional.java" region="example"}
+      */
+     void test() {
+       //...
+     }
+ }
+
+Where ShowOptional.java is a file containing:
+
+
+public class ShowOptional {
+    void show(Optional<String> v) {
+        // @start region="example"
+        if (v.isPresent()) {
+            System.out.println("v: " + v.get());
+        }
+        // @end
+    }
+}
+
+The content of the requested @start and @end regions will include in the ShowExample.java documentation.
+
+
+  if (v.isPresent()) {
+      System.out.println("v: " + v.get());
+  }

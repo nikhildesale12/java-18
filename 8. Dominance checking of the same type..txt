@@ -1,0 +1,25 @@
+Review the below switch pattern matching, every value that matches the String s also matches the CharSequence cs, which makes String s unreadable and will cause a compile-time error.
+
+
+  static void error (Object o){
+        switch (o) {
+            case CharSequence cs -> System.out.println("A sequence of length " + cs.length());
+            case String s ->    // Error - pattern is dominated by previous pattern
+                    System.out.println("A string: " + s);
+            default -> {
+                break;
+            }
+        }
+    }
+
+If we run the above code with Java 18, it will cause a compile-time error.
+
+Terminal
+
+    java: this case label is dominated by a preceding case label
+
+The IntelliJ IDE will highlight the error label and show a more user-friendly error message when you hover over it.
+
+Terminal
+
+    Label is dominated by a preceding case label 'CharSequence cs'

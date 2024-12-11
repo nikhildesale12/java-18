@@ -1,0 +1,6 @@
+This JEP improves the Vector API performance and other enhancements in response to feedback.
+
+History
+
+Java 16, JEP 338 introduced new Vector API as an incubating API.
+Java 17, JEP 414 enhanced the Vector API second incubator.

@@ -1,0 +1,30 @@
+This provides a command-line tool, jwebserver to start a simple web server to serve static files,
+suitable for prototyping, ad-hoc coding, testing, and educational purpose, not for a production server.
+
+By default, the jwebserver starts a simple web server at port 8000, and serves the static files from the current directory that start the command. Furthermore, it serves only HEAD and GET requests, 
+and other requests will receive a 501 – Not Implemented or a 405 – Not Allowed response.
+
+ ./jwebserver
+
+  Binding to loopback by default. For all interfaces use "-b 0.0.0.0" or "-b ::".
+  Serving /Library/Java/JavaVirtualMachines/temurin-18.jdk/Contents/Home/bin and subdirectories on 127.0.0.1 port 8000
+  URL http://127.0.0.1:8000/
+  127.0.0.1 - - [10/Nov/2022:18:59:22 +0800] "GET / HTTP/1.1" 200
+
+
+The below command starts a static web server at port 8888.
+
+
+  # We can use `-p` option to start the web server at different port
+
+  ./jwebserver -p 8888
+
+
+
+The below command starts a static web server at port 8888 and serves files from the directory /Users/mkyong.
+
+
+  # We can use `-d` option to serve static files from a specified directory
+
+  ./jwebserver -p 8888 -d /Users/mkyong
+

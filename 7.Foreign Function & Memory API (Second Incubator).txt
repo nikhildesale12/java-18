@@ -1,0 +1,12 @@
+This Foreign Function & Memory API allows the developer to access the code outside the JVM (foreign functions), data stored outside the JVM (off-heap data), and accessing memory not managed by the JVM (foreign memory).
+
+This JEP improves the Foreign Function & Memory API and other enhancements in response to feedback.
+
+History
+
+Java 14 JEP 370 introduced Foreign-Memory Access API (Incubator).
+Java 15 JEP 383 introduced Foreign-Memory Access API (Second Incubator).
+Java 16 JEP 389 introduced Foreign Linker API (Incubator).
+Java 16 JEP 393 introduced Foreign-Memory Access API (Third Incubator).
+Java 17 JEP 412 introduced Foreign Function & Memory API (Incubator).
+Java 18 JEP 419 introduced Foreign Function & Memory API (Second Incubator).
