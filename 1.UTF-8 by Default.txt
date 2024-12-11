@@ -1,0 +1,10 @@
+In Java 18, this JEP makes the default charset to UTF-8. However, 
+we still allow configuring the default charset to others by providing the system property ‘file.encoding’.
+
+In Java 18, if the file.encoding system property is COMPACT, the JVM uses Java 17 and an earlier algorithm to choose the default charset.
+
+java -Dfile.encoding=COMPAT
+
+If the file.encoding is UTF-8, the default charset will be UTF-8, a no-op value in Java 18.
+
+java -Dfile.encoding=UTF-8
